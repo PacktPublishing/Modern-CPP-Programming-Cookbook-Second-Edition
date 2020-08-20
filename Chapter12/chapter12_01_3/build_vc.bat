@@ -1,0 +1,2 @@
+cl /std:c++latest /experimental:module /EHsc /MD /module:exportHeader geometry.h /Fogeometry.h.obj
+cl /std:c++latest /experimental:module /EHsc /MD /module:reference geometry.h:geometry.h.ifc main.cpp geometry.h.obj

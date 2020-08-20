@@ -1,0 +1,95 @@
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+
+# =========================
+# Operating System Files
+# =========================
+
+# OSX
+# =========================
+
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+/build/.vs/cppcookbook
+/build
+/Chapter01/.vs
+/.vs
+/Chapter12/chapter12_01_3/main.obj
+/Chapter12/chapter12_01_3/main.exe
+/Chapter12/chapter12_01_3/geometry.h.obj
+/Chapter12/chapter12_01_3/geometry.h.ifc
+/Chapter12/chapter12_01_2/main.obj
+/Chapter12/chapter12_01_2/main.exe
+/Chapter12/chapter12_01_2/geometry.obj
+/Chapter12/chapter12_01_2/geometry.ifc
+/Chapter12/chapter12_01_1/main.obj
+/Chapter12/chapter12_01_1/main.exe
+/Chapter12/chapter12_02_1/main.obj
+/Chapter12/chapter12_02_1/main.exe
+/Chapter12/chapter12_02_1/geometry.obj
+/Chapter12/chapter12_02_1/geometry.ifc
+/Chapter12/chapter12_02_1/geometry-literals.obj
+/Chapter12/chapter12_02_1/geometry-literals.ifc
+/Chapter12/chapter12_02_1/geometry-core.obj
+/Chapter12/chapter12_02_1/geometry-core.ifc
+/Chapter12/chapter12_02_2/main.obj
+/Chapter12/chapter12_02_2/main.exe
+/Chapter12/chapter12_02_2/geometry.obj
+/Chapter12/chapter12_02_2/geometry.ifc
+/Chapter12/chapter12_02_2/geometry-literals.obj
+/Chapter12/chapter12_02_2/geometry-literals.ifc
+/Chapter12/chapter12_02_2/geometry-details.obj
+/Chapter12/chapter12_02_2/geometry-details.ifc
+/Chapter12/chapter12_02_2/geometry-core.obj
+/Chapter12/chapter12_02_2/geometry-core.ifc
+/Chapter12/chapter12_02_3/main.obj
+/Chapter12/chapter12_02_3/main.exe
+/Chapter12/chapter12_02_3/geometry.literals.ifc
+/Chapter12/chapter12_02_3/geometry.core.ifc
+/Chapter12/chapter12_02_3/geometry-literals.obj
+/Chapter12/chapter12_02_3/geometry-core.obj
+/Chapter12/chapter12_02_3/geometry.obj
+/Chapter12/chapter12_02_3/geometry.ifc
+/Chapter12/chapter12_02_4/main.obj
+/Chapter12/chapter12_02_4/main.exe
+/Chapter12/chapter12_02_4/geometry.literals.ifc
+/Chapter12/chapter12_02_4/geometry.core.ifc
+/Chapter12/chapter12_02_4/geometry-literals.obj
+/Chapter12/chapter12_02_4/geometry-core.obj
+/Chapter12/chapter12_02_3/main.cpp
+/bin/Debug
