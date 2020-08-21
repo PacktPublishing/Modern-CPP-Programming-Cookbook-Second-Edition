@@ -34,6 +34,7 @@ namespace recipe_3_02
 
          auto run()
          {
+            // warning when compiled with c++20
             return [=] { std::cout << id << ' ' << name << '\n'; };
          }
       };

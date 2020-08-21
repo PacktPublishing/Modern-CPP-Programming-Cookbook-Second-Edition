@@ -74,7 +74,7 @@ namespace recipe_1_01
       }
 
       {
-         auto l1 = long long{ 42 }; // error
+         //auto l1 = long long{ 42 }; // error
 
          using llong = long long;
          auto l2 = llong{ 42 };     // OK

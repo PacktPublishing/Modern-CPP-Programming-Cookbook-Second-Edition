@@ -1,5 +1,7 @@
 #pragma once
 
+#include <memory>
+
 namespace recipe_4_05
 {
    namespace v1
@@ -89,27 +91,27 @@ namespace recipe_4_05
    {
       {
          using namespace v1;
-         auto v1 = value_of(42);
+         [[maybe_unused]] auto v1 = value_of(42);
 
          auto p = std::make_unique<int>(42);
-         auto v2 = value_of(p.get());
+         [[maybe_unused]] auto v2 = value_of(p.get());
       }
 
       {
          using namespace v2;
-         auto v1 = value_of(42);
+         [[maybe_unused]] auto v1 = value_of(42);
 
          auto p = std::make_unique<int>(42);
-         auto v2 = value_of(p.get());
+         [[maybe_unused]] auto v2 = value_of(p.get());
       }
 
       {
          using namespace binary;
          using namespace binary_literals;
 
-         auto b1 = 1010_b8;
-         auto b2 = 101010101010_b16;
-         auto b3 = 010101010101010101010101_b32;
+         [[maybe_unused]] auto b1 = 1010_b8;
+         [[maybe_unused]] auto b2 = 101010101010_b16;
+         [[maybe_unused]] auto b3 = 010101010101010101010101_b32;
       }
    }
 }

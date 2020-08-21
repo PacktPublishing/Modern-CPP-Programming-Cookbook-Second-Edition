@@ -8,9 +8,9 @@ using namespace std::string_literals;
 namespace recipe_4_04
 {
    template <typename T>
-   void func(typename T::value_type const a) 
+   void func([[maybe_unused]] typename T::value_type const a)
       { std::cout << "func<>" << '\n'; }
-   void func(int const a) 
+   void func([[maybe_unused]] int const a)
       { std::cout << "func" << '\n'; }
 
    template <typename T>
@@ -68,14 +68,14 @@ namespace recipe_4_04
    template <typename T>
    auto compute(T const a, T const b)
    {
-      static_assert(std::is_integral<T>, "An integral type expected");
+      static_assert(std::is_integral_v<T>, "An integral type expected");
       return a + b;
    }
 
    template <typename T, typename = void>
    auto compute(T const a, T const b)
    {
-      static_assert(!std::is_integral<T>, "A non-integral type expected");
+      static_assert(!std::is_integral_v<T>, "A non-integral type expected");
       return a * b;
    }
 
@@ -107,7 +107,7 @@ namespace recipe_4_04
       }
 
       {
-         auto v1 = mul(1, 2);     // OK
+         [[maybe_unused]] auto v1 = mul(1, 2);     // OK
          //auto v2 = mul(1.0, 2.0); // error: no matching overloaded function found
       }
 
@@ -118,7 +118,7 @@ namespace recipe_4_04
       }
 
       {
-         auto v1 = mul2(1, 2);     // OK
+         [[maybe_unused]] auto v1 = mul2(1, 2);     // OK
          //auto v2 = mul2(1.0, 2.0); // error: no matching overloaded function found
       }
 
@@ -128,8 +128,8 @@ namespace recipe_4_04
       }
 
       {
-         auto v1 = compute2(1, 2);     // v1 = 2
-         auto v2 = compute2(1.0, 2.0); // v2 = 3.0
+         [[maybe_unused]] auto v1 = compute2(1, 2);     // v1 = 2
+         [[maybe_unused]] auto v2 = compute2(1.0, 2.0); // v2 = 3.0
       }
    }
 }

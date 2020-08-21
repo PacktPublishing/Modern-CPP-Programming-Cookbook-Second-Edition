@@ -3,6 +3,7 @@
 #include <iostream>
 #include <limits>
 #include <bitset>
+#include <climits>
 
 namespace recipe_2_02
 {
@@ -54,7 +55,7 @@ namespace recipe_2_02
       print_type_properties<double>();
       print_type_properties<int>();
 
-      int range[std::numeric_limits<char>::max() + 1] = { 0 };
+      [[maybe_unused]] int range[std::numeric_limits<char>::max() + 1] = { 0 };
 
       switch (get_value())
       {

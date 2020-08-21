@@ -8,6 +8,7 @@
 #include <string>
 #include <algorithm>
 #include <iostream>
+#include <cmath>
 #include "funclib.h"
 
 namespace recipe_3_07

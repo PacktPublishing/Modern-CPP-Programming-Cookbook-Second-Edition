@@ -1,7 +1,6 @@
 #pragma once
 
 #include <string>
-//#include "recipe_3_05.h"
 #include "funclib.h"
 
 namespace recipe_3_08
@@ -15,7 +14,7 @@ namespace recipe_3_08
    template <typename F, typename... R>
    auto operator*(F&& f, R&&... r)
    {
-      return funclib::operator*(std::forward<F>(f), r...);
+      return operator*(std::forward<F>(f), r...);
    }
 
    void execute()
@@ -35,7 +34,7 @@ namespace recipe_3_08
             [](int const n) {return n + n; },
             [](int const n) {return std::abs(n); })(-3);
 
-         auto s = compose(
+         [[maybe_unused]] auto s = compose(
             [](std::vector<int> const & v) {
             return foldl(std::plus<>(), v, 0); },
             [](std::vector<int> const & v) {
@@ -59,7 +58,7 @@ namespace recipe_3_08
             [](std::vector<int> const & v) {
                return mapf([](int const i) {return std::abs(i); }, v); };
 
-         auto s = c(vnums);
+         [[maybe_unused]] auto s = c(vnums);
       }
    }
 }

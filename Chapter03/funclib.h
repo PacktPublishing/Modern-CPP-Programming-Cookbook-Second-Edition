@@ -2,7 +2,7 @@
 
 #include <map>
 #include <queue>
-#include <algorithm>
+#include <numeric>
 
 namespace funclib
 {

@@ -31,9 +31,9 @@ namespace recipe_4_01
 #if defined _MSC_VER
       
 #if (_MSC_VER >= 1900)
-      std::cout << "Visual C++ 2015 or newer\n";
+      std::cout << "Visual C++ 2019 or newer\n";
 #else 
-      std::cout << "Visual C++ " << _MSC_FULL_VER\n";
+      std::cout << "Visual C++ " << _MSC_FULL_VER << '\n';
 #endif
 
 #elif defined __clang__

@@ -72,7 +72,7 @@ namespace recipe_4_06
          func();
 
          // warning: 'foo' is deprecated
-         foo f;
+         [[maybe_unused]] foo f;
       }
 
       {

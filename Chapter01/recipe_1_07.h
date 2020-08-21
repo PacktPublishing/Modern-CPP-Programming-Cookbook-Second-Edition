@@ -29,7 +29,7 @@ namespace recipe_1_07
          {
             virtual void foo() = 0;
             virtual void bar() {}
-            virtual void foobar() = 0 {}
+            virtual void foobar() = 0;
          };
 
          class Derived1 : public Base
