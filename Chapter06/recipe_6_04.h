@@ -2,6 +2,7 @@
 
 #include <chrono>
 #include <iostream>
+#include <functional>
 
 namespace recipe_6_04
 {

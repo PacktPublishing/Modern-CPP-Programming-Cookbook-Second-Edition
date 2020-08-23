@@ -1,10 +1,11 @@
 #pragma once
 
+#include <iostream>
 #include <string>
 
 namespace recipe_9_06
 {
-   void old_api(char* str, unsigned int size)
+   void old_api([[maybe_unused]] char* str, [[maybe_unused]] unsigned int size)
    {
       // do something without changing the string
    }
@@ -15,7 +16,7 @@ namespace recipe_9_06
       typedef   size_t data_type;
 
       void      set_data(data_type d) { data = d; }
-      data_type get_data() const      { return data; }
+      data_type get_data() const { return data; }
 
    private:
       data_type data;
@@ -47,10 +48,10 @@ namespace recipe_9_06
          int x = 42, y = 13;
          double d = static_cast<double>(x) / y;
 
-         int n = static_cast<int>(d);
+         [[maybe_unused]] int n = static_cast<int>(d);
 
          int value = 1;
-         options op = static_cast<options>(value);
+         [[maybe_unused]] options op = static_cast<options>(value);
       }
 
       // dynamic cast
@@ -58,15 +59,15 @@ namespace recipe_9_06
          derived d;
          base    b;
 
-         base* pb = dynamic_cast<base*>(&d);         // OK
-         derived* pd = dynamic_cast<derived*>(&b);   // fail
+         [[maybe_unused]] base* pb = dynamic_cast<base*>(&d);         // OK
+         [[maybe_unused]] derived* pd = dynamic_cast<derived*>(&b);   // fail
 
          try
          {
-            base& rb = dynamic_cast<base&>(d);       // OK
-            derived& rd = dynamic_cast<derived&>(b); // fail
+            [[maybe_unused]] base& rb = dynamic_cast<base&>(d);       // OK
+            [[maybe_unused]] derived& rd = dynamic_cast<derived&>(b); // fail
          }
-         catch (std::bad_cast const & e)
+         catch (std::bad_cast const& e)
          {
             std::cout << e.what() << '\n';
          }
@@ -77,13 +78,13 @@ namespace recipe_9_06
 
       // const cast
       {
-         std::string str{"sample"};
-         old_api(const_cast<char*>(str.c_str()), 
-                 static_cast<unsigned int>(str.size()));
+         std::string str{ "sample" };
+         old_api(const_cast<char*>(str.c_str()),
+            static_cast<unsigned int>(str.size()));
 
          // undefined behavior
          int const a = 42;
-         int const * p = &a;
+         int const* p = &a;
          int* q = const_cast<int*>(p);
          *q = 0;
       }
@@ -95,11 +96,11 @@ namespace recipe_9_06
          user_data* ud = new user_data();
          c.set_data(reinterpret_cast<control::data_type>(ud));
 
-         user_data* ud2 = reinterpret_cast<user_data*>(c.get_data());
+         [[maybe_unused]] user_data* ud2 = reinterpret_cast<user_data*>(c.get_data());
 
          // undefined behavior
          int* pi = new int{ 42 };
-         double* pd = reinterpret_cast<double*>(pi);
+         [[maybe_unused]] double* pd = reinterpret_cast<double*>(pi);
       }
    }
 }

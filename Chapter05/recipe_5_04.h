@@ -2,6 +2,7 @@
 
 #include <vector>
 #include <iostream>
+#include <cstring>
 
 #ifdef HAS_BITS_LIBRARY
 #include <bit>

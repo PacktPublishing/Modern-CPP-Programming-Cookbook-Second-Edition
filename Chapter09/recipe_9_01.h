@@ -54,7 +54,7 @@ namespace recipe_9_01
 
    void throwing_func()
    {
-      throw std::exception("timed out");
+      throw std::runtime_error("timed out");
    }
 
    void another_throwing_func()

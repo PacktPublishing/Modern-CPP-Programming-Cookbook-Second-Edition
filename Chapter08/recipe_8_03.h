@@ -4,6 +4,7 @@
 #include <thread>
 #include <iostream>
 #include <vector>
+#include <exception>
 
 namespace recipe_8_03
 {
@@ -12,12 +13,12 @@ namespace recipe_8_03
 
    void func1()
    {
-      throw std::exception("exception 1");
+      throw std::runtime_error("exception 1");
    }
 
    void func2()
    {
-      throw std::exception("exception 2");
+      throw std::runtime_error("exception 2");
    }
 
    void thread_func1()

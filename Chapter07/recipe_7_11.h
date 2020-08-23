@@ -27,9 +27,9 @@ namespace recipe_7_11
       }
       else
       {
-         std::wcout 
+         std::cout 
             << "Directory " 
-            << std::quoted(dir.c_str()) 
+            << std::quoted(dir.string()) 
             << " does not exit" << '\n';
       }
    }
@@ -53,9 +53,9 @@ namespace recipe_7_11
       }
       else
       {
-         std::wcout
+         std::cout
             << "Directory "
-            << std::quoted(dir.c_str())
+            << std::quoted(dir.string())
             << " does not exit" << '\n';
       }
    }
@@ -87,9 +87,9 @@ namespace recipe_7_11
       }
       else
       {
-         std::wcout
+         std::cout
             << "Directory "
-            << std::quoted(dir.c_str())
+            << std::quoted(dir.string())
             << " does not exit" << '\n';
       }
    }
@@ -105,7 +105,7 @@ namespace recipe_7_11
             if (fs::is_regular_file(entry.status()) ||
                fs::is_symlink(entry.status()))
             {
-               auto err = std::error_code{};
+               [[maybe_unused]] auto err = std::error_code{};
                auto filesize = fs::file_size(entry);
                if (filesize != static_cast<uintmax_t>(-1))
                   size += filesize;

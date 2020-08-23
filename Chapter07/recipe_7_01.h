@@ -7,6 +7,7 @@
 #include <cassert>
 #include <iterator>
 #include <functional>
+#include <cstring>
 
 namespace recipe_7_01
 {
