@@ -85,7 +85,7 @@ struct task
          return !handle_ || handle_.done();
       }
 
-      void await_suspend(stdco::coroutine_handle<> continuation) noexcept
+      void await_suspend([[maybe_unused]] stdco::coroutine_handle<> continuation) noexcept
       {
          handle_.resume();
       }
@@ -173,7 +173,7 @@ task<> say_hello()
 }
 
 template <typename T>
-void execute(T& t)
+void execute(T&& t)
 {
    while (!t.is_ready()) t.resume(); 
 };

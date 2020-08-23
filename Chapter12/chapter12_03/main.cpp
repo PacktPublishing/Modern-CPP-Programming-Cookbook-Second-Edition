@@ -200,7 +200,7 @@ int main()
       auto snv = SmartNumericalValue<double>{ 42.0 };
       print(snv);                      // prints 42
 
-      auto dnv = DullNumericalValue<short>{ 42 };
+      [[maybe_unused]] auto dnv = DullNumericalValue<short>{ 42 };
       // print(dnv);                      // error
    }
 
