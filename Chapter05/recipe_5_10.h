@@ -4,6 +4,7 @@
 #include <string>
 #include <memory>
 #include <algorithm>
+#include <iostream>
 
 namespace recipe_5_10
 {
@@ -20,8 +21,8 @@ namespace recipe_5_10
       int id;
       std::string name;
 
-      Tag(int const id = 0, std::string const & name = ""s) : 
-         id(id), name(name) 
+      Tag(int const id = 0, std::string const& name = ""s) :
+         id(id), name(name)
       {}
    };
 
@@ -36,8 +37,8 @@ namespace recipe_5_10
          if (index < SIZE) return data[index];
          throw std::out_of_range("index out of range");
       }
-      
-      Type const & operator[](size_t const index) const
+
+      Type const& operator[](size_t const index) const
       {
          if (index < SIZE) return data[index];
          throw std::out_of_range("index out of range");
@@ -51,8 +52,8 @@ namespace recipe_5_10
       public:
          typedef dummy_array_iterator              self_type;
          typedef T                                 value_type;
-         typedef T&                                reference;
-         typedef T*                                pointer;
+         typedef T& reference;
+         typedef T* pointer;
          typedef std::random_access_iterator_tag   iterator_category;
          typedef ptrdiff_t                         difference_type;
 
@@ -60,27 +61,27 @@ namespace recipe_5_10
          pointer  ptr = nullptr;
          size_t   index = 0;
 
-         bool compatible(self_type const & other) const
+         bool compatible(self_type const& other) const
          {
             return ptr == other.ptr;
          }
 
       public:
          explicit dummy_array_iterator(pointer ptr, size_t const index) :
-            ptr(ptr), index(index)            
+            ptr(ptr), index(index)
          {
          }
 
          // --- common to all iterators ---
          // copy-constructible, copy-assignable and destructible
-         dummy_array_iterator(dummy_array_iterator const & o) = default;
-         dummy_array_iterator& operator=(dummy_array_iterator const & o) = default;
+         dummy_array_iterator(dummy_array_iterator const& o) = default;
+         dummy_array_iterator& operator=(dummy_array_iterator const& o) = default;
          ~dummy_array_iterator() = default;
 
          // can be prefix- and postfix- incremented
-         self_type & operator++ ()
+         self_type& operator++ ()
          {
-            if (index >= Size) 
+            if (index >= Size)
                throw std::out_of_range("Iterator cannot be incremented past the end of range.");
             ++index;
             return *this;
@@ -89,20 +90,20 @@ namespace recipe_5_10
          self_type operator++ (int)
          {
             self_type tmp = *this;
-            ++*this;
+            ++* this;
             return tmp;
          }
          // --- common to all iterators ---
 
          // --- input iterator ---
          // supports equality/inequality comparisons
-         bool operator== (self_type const & other) const
+         bool operator== (self_type const& other) const
          {
             assert(compatible(other));
             return index == other.index;
          }
 
-         bool operator!= (self_type const & other) const
+         bool operator!= (self_type const& other) const
          {
             return !(*this == other);
          }
@@ -137,9 +138,9 @@ namespace recipe_5_10
 
          // --- bidirectional iterator ---
          // can be decremented
-         self_type & operator--()
+         self_type& operator--()
          {
-            if (index <= 0) 
+            if (index <= 0)
                throw std::out_of_range("Iterator cannot be decremented past the end of range.");
             --index;
             return *this;
@@ -148,7 +149,7 @@ namespace recipe_5_10
          self_type operator--(int)
          {
             self_type tmp = *this;
-            --*this;
+            --* this;
             return tmp;
          }
          // --- bidirectional iterator ---
@@ -167,36 +168,36 @@ namespace recipe_5_10
             return tmp -= offset;
          }
 
-         difference_type operator-(self_type const & other) const
+         difference_type operator-(self_type const& other) const
          {
             assert(compatible(other));
             return (index - other.index);
          }
 
          // supports inequality comparisons (<, >, <= and >=) between iterators
-         bool operator<(self_type const & other) const
+         bool operator<(self_type const& other) const
          {
             assert(compatible(other));
             return index < other.index;
          }
 
-         bool operator>(self_type const & other) const
+         bool operator>(self_type const& other) const
          {
             return other < *this;
          }
 
-         bool operator<=(self_type const & other) const
+         bool operator<=(self_type const& other) const
          {
             return !(other < *this);
          }
 
-         bool operator>=(self_type const & other) const
+         bool operator>=(self_type const& other) const
          {
             return !(*this < other);
          }
 
          // supports compound assignment operations += and -=
-         self_type & operator+=(difference_type const offset)
+         self_type& operator+=(difference_type const offset)
          {
             if (index + offset < 0 || index + offset > Size)
                throw std::out_of_range("Iterator cannot be incremented past the end of range.");
@@ -205,18 +206,18 @@ namespace recipe_5_10
             return *this;
          }
 
-         self_type & operator-=(difference_type const offset)
+         self_type& operator-=(difference_type const offset)
          {
             return *this += -offset;
          }
 
          // supports offset dereference operator ([])
-         value_type & operator[](difference_type const offset)
+         value_type& operator[](difference_type const offset)
          {
             return (*(*this + offset));
          }
 
-         value_type const & operator[](difference_type const offset) const
+         value_type const& operator[](difference_type const offset) const
          {
             return (*(*this + offset));
          }
@@ -227,7 +228,7 @@ namespace recipe_5_10
       typedef dummy_array_iterator<Type const, SIZE>  constant_iterator;
 
    public:
-      iterator begin() 
+      iterator begin()
       {
          return iterator(data, 0);
       }
@@ -275,8 +276,8 @@ namespace recipe_5_10
          ci1++;
 
          // equality/inequality comparison
-         auto e1 = i1 == i2;
-         auto e2 = i1 == i3;
+         [[maybe_unused]] auto e1 = i1 == i2;
+         [[maybe_unused]] auto e2 = i1 == i3;
          //auto e3 = i1 == y1;
 
          // dereferenced as rvalue
@@ -306,13 +307,13 @@ namespace recipe_5_10
          auto x1 = i1 + 2;
          //auto x2 = 1 + i1;
          auto x3 = i4 - 1;
-         auto d = x1 - x3;
+         [[maybe_unused]] auto d = x1 - x3;
 
          // logical comparison
-         auto ls = i1 < i4;
-         auto gt = i1 > i4;
-         auto le = i1 <= i4;
-         auto ge = i1 >= i4;
+         [[maybe_unused]] auto ls = i1 < i4;
+         [[maybe_unused]] auto gt = i1 > i4;
+         [[maybe_unused]] auto le = i1 <= i4;
+         [[maybe_unused]] auto ge = i1 >= i4;
 
          // compound assignment
          i1 += 2;
@@ -321,7 +322,7 @@ namespace recipe_5_10
          i1 -= 2;
 
          // offset dereference operator
-         auto e = i1[2];
+         [[maybe_unused]] auto e = i1[2];
       }
 
       {
@@ -347,9 +348,9 @@ namespace recipe_5_10
 
          for (auto&& e : a) std::cout << e << '\n';
 
-         auto lp = [](dummy_array<int, 5> const & ca)
+         auto lp = [](dummy_array<int, 5> const& ca)
          {
-            for (auto const & e : ca) 
+            for (auto const& e : ca)
                std::cout << e << '\n';
          };
 
@@ -364,7 +365,7 @@ namespace recipe_5_10
          a[3] = Task{ 40, "Task 4" };
          a[4] = Task{ 50, "Task 5" };
 
-         for (auto&& e : a) 
+         for (auto&& e : a)
             std::cout << e.priority << " " << e.name << '\n';
 
          auto p0 = &a[0];
@@ -394,7 +395,7 @@ namespace recipe_5_10
          a[3] = 40;
          a[4] = 50;
 
-         auto lp = [](dummy_array<int, 5> const & arr)
+         auto lp = [](dummy_array<int, 5> const& arr)
          {
             for (size_t i = 0; i < arr.size(); ++i)
             {
