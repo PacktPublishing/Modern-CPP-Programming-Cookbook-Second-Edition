@@ -29,8 +29,8 @@ namespace recipe_1_04
 
    struct Control
    {
-      const int defaultHeigh = 14;
-      const int defaultWidth = 80;
+      const int DefaultHeight = 14;
+      const int DefaultWidth = 80;
       
       std::string text;
       TextVerticalAligment valign = TextVerticalAligment::Middle;
