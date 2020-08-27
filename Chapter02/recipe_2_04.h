@@ -9,7 +9,7 @@ namespace recipe_2_04
 {
    void monte_carlo_simulation()
    {
-      auto seed_data = std::array<int, std::mt19937::state_size> {};
+      std::array<int, std::mt19937::state_size> seed_data {};
       std::random_device rd;
 
       std::generate(std::begin(seed_data), std::end(seed_data), std::ref(rd));

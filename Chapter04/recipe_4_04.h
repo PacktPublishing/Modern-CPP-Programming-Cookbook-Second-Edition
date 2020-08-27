@@ -20,7 +20,7 @@ namespace recipe_4_04
    };
 
    template <typename T,
-             typename = typename std::enable_if<std::is_standard_layout_v<T>, T>::type>
+             typename = typename std::enable_if_t<std::is_standard_layout_v<T>, T>>
    class pod_wrapper
    {
       T value;

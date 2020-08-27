@@ -98,12 +98,12 @@ namespace recipe_3_07
          auto s = funclib::foldl(
             std::plus<>(),
             funclib::mapf(
-               [](int const i) {return i+i; }, 
+               [](int const i) {return i*i; }, 
                funclib::mapf(
                   [](int const i) {return std::abs(i); },
                   vnums)),
             0); 
-         // s = 76
+         // s = 236
       }
    }
 }

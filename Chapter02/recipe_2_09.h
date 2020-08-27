@@ -61,12 +61,7 @@ namespace recipe_2_09
 
       auto ltest3 = [](std::string const & email)
       {
-         auto valid{ false };
-         auto localpart = std::string{};
-         auto hostname = std::string{};
-         auto dnslabel = std::string{};
-
-         std::tie(valid, localpart, hostname, dnslabel) =
+         auto[valid, localpart, hostname, dnslabel] =
             is_valid_email_format_with_result(email);
 
          std::cout << std::setw(30) << std::left

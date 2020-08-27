@@ -46,6 +46,15 @@ namespace recipe_3_05
       return value == first || is_any(value, rest...);
    }
 
+   template<typename... T>
+   auto make_even_tuple(T... a)
+   {
+      static_assert(sizeof...(a) % 2 == 0,
+         "expected an even number of arguments");
+      std::tuple<T...> t{ a... };
+      return t;
+   }
+
    void execute()
    {
       using namespace std::string_literals;
@@ -64,6 +73,13 @@ namespace recipe_3_05
          auto i1 = is_any(42, 1, 23, 76, 44, 5);
 
          auto a = 0;
+      }
+
+      {
+         auto t1 = make_even_tuple(1, 2, 3, 4); // OK
+
+         // error: expected an even number of arguments
+         // auto t2 = make_even_tuple(1, 2, 3);
       }
    }
 }

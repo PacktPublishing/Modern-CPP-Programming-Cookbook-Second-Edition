@@ -80,7 +80,7 @@ namespace recipe_2_07
 
       auto b1 = 1010_b8;
       auto b2 = 101010101010_b16;
-      auto b3 = 010101010101010101010101_b32;
+      auto b3 = 10101010101010101010101_b32;
 
       // binary literal b8 must be up to 8 digits long
       //auto b4 = 0011111111_b8;

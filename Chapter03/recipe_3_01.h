@@ -34,18 +34,18 @@ namespace recipe_3_01
       data_wrapper(data_wrapper const&) = delete;
       data_wrapper& operator=(data_wrapper const &) = delete;
 
-      data_wrapper(data_wrapper&& o) :data(std::move(o.data)) 
+      data_wrapper(data_wrapper&& other) :data(std::move(other.data)) 
       { 
-         o.data = nullptr; 
+         other.data = nullptr; 
       }
 
-      data_wrapper& operator=(data_wrapper&& o)
+      data_wrapper& operator=(data_wrapper&& other)
       {
-         if (this != &o)
+         if (this != std::addressof(other))
          {
             delete data;
-            data = std::move(o.data);
-            o.data = nullptr;
+            data = std::move(other.data);
+            other.data = nullptr;
          }
 
          return *this;

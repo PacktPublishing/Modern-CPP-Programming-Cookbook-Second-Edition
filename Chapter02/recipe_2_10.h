@@ -11,7 +11,7 @@ namespace recipe_2_10
    {
       auto text{
          R"(
-#remove # to uncomment the following lines
+#remove # to uncomment a line
 timeout=120
 server = 127.0.0.1
 

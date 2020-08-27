@@ -127,15 +127,18 @@ namespace recipe_2_06
          auto s2{ L"text"s }; // std::wstring
          auto s3{ u"text"s }; // std::u16string
          auto s4{ U"text"s }; // std::u32string
+
+         using namespace std::string_view_literals;
+         auto s5{ "text"sv }; // std::string_view
       }
 
       {
-         using namespace std::literals::chrono_literals;
+         using namespace std::chrono_literals;
          auto timer{ 2h + 42min + 15s }; // std::chrono::duration<long long>
       }
 
       {
-         using namespace std::literals::complex_literals;
+         using namespace std::complex_literals;
          auto c{ 12.0 + 4.5i }; // std::complex<double>
       }
 

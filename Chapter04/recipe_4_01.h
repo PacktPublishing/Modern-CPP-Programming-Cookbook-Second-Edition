@@ -16,13 +16,13 @@ namespace recipe_4_01
    void show_compiler()
    {
 #if defined _MSC_VER
-      std::cout << "Visual C++" << '\n';
+      std::cout << "Visual C++\n";
 #elif defined __clang__
-      std::cout << "Clang" << '\n';
+      std::cout << "Clang\n";
 #elif defined __GNUG__
-      std::cout << "GCC" << '\n';
+      std::cout << "GCC\n";
 #else
-      std::cout << "Unknown compiler" << '\n';
+      std::cout << "Unknown compiler\n";
 #endif
    }
 
