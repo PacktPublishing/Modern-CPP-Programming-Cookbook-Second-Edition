@@ -23,7 +23,7 @@ namespace recipe_6_09
       return text;
    }
 
-   enum class Genre { Drama, Action, SF, Commedy };
+   enum class Genre { Drama, Action, SF, Comedy };
 
    struct Movie
    {

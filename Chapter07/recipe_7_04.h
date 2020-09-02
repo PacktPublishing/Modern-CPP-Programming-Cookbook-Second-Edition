@@ -38,7 +38,7 @@ namespace recipe_7_04
          std::cout << std::left << std::setw(18) << std::setfill(' ') << company.Industry;
          std::cout << std::left << std::setw(5) << std::setfill(' ') << company.Revenue;
          std::cout << std::left << std::setw(5) << std::setfill(' ')
-            << std::boolalpha << company.RevenueIncrease;
+            << std::boolalpha << company.RevenueIncrease << std::noboolalpha;
          std::cout << std::right << std::setw(5) << std::setfill(' ')
             << std::fixed << std::setprecision(1) << company.Growth
             << std::defaultfloat << std::setprecision(6) << ' ';
