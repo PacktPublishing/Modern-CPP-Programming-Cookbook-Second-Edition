@@ -76,5 +76,21 @@ namespace recipe_8_07
 
          std::cout << value << '\n';
       }
+
+      {
+         auto f = std::async(std::launch::async, do_something);
+
+         while (true)
+         {
+            using namespace std::chrono_literals;
+            auto status = f.wait_for(500ms);
+            if (status == std::future_status::ready)
+               break;
+
+            std::cout << "waiting..." << '\n';
+         }
+
+         std::cout << "done!" << '\n';
+      }
    }
 }

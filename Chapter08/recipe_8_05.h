@@ -54,10 +54,13 @@ namespace recipe_8_05
       {
          std::unique_lock<std::mutex> locker(g_lockqueue);
 
-         g_queuecheck.wait(locker, [&]() {return !g_buffer.empty(); });
+         g_queuecheck.wait_for(
+            locker, 
+            std::chrono::seconds(1),
+            [&]() {return !g_buffer.empty(); });
 
          // if there are values in the queue process them
-         while (!g_buffer.empty())
+         while (!g_done && !g_buffer.empty())
          {
             std::unique_lock<std::mutex> locker(g_lockprint);
             std::cout
@@ -68,7 +71,55 @@ namespace recipe_8_05
       }
    }
 
-   void execute()
+   void simple_example()
+   {
+      std::condition_variable cv;
+      std::mutex              cv_mutex; // data mutex
+      std::mutex              io_mutex; // I/O mutex
+      int                     data = 0;
+
+      std::cout << "simple example start\n";
+
+      std::thread p([&]() {
+         // simulate long running operation
+         {
+            using namespace std::chrono_literals;
+            std::this_thread::sleep_for(2s);
+         }
+         // produce
+         {
+            std::unique_lock lock(cv_mutex);
+            data = 42;
+         }
+         // print message
+         {
+            std::lock_guard l(io_mutex);
+            std::cout << "produced " << data << '\n';
+         }
+
+         cv.notify_one();
+      });
+
+      std::thread c([&]() {
+         // wait for notification
+         {
+            std::unique_lock lock(cv_mutex);
+            cv.wait(lock);
+         }
+
+         {
+            std::lock_guard lock(io_mutex);
+            std::cout << "consumed " << data << '\n';
+         }
+      });
+
+      p.join();
+      c.join();
+
+      std::cout << "simple example end\n";
+   }
+
+   void complex_example()
    {
       auto seed_data = std::array<int, std::mt19937::state_size> {};
       std::random_device rd{};
@@ -103,5 +154,11 @@ namespace recipe_8_05
       consumerthread.join();
 
       std::cout << "done producing and consuming" << '\n';
+   }
+
+   void execute()
+   {
+      simple_example();
+      complex_example();
    }
 }
