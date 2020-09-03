@@ -143,6 +143,16 @@ namespace recipe_9_08
             [](int* p) {delete[] p; });
       }
 
+      // array element access
+      {
+         std::shared_ptr<int[]> pa1(
+            new int[3]{ 1, 2, 3 },
+            std::default_delete<int[]>());
+
+         for (int i = 0; i < 3; ++i)
+            pa1[i] *= 2;
+      }
+
       // dereferencing
       {
          std::shared_ptr<int> pi = std::make_shared<int>(42);
@@ -223,7 +233,7 @@ namespace recipe_9_08
 #ifdef HAS_FOR_OVERWRITE
       {
          std::shared_ptr<int> pi = std::make_shared_for_overwrite<int>();
-         std::shared_ptr<foo> pa = std::make_shared_for_overwrite<foo[]>(3);
+         std::shared_ptr<foo[]> pa = std::make_shared_for_overwrite<foo[]>(3);
       }
 #endif
    }

@@ -10,7 +10,7 @@ namespace recipe_9_06
       // do something without changing the string
    }
 
-   class control
+   class widget
    {
    public:
       typedef   size_t data_type;
@@ -52,6 +52,13 @@ namespace recipe_9_06
 
          int value = 1;
          [[maybe_unused]] options op = static_cast<options>(value);
+
+         base b;
+         derived* pd = static_cast<derived*>(&b); // compilers OK, runtime error
+         [[maybe_unused]] base* pb1 = static_cast<base*>(pd);      // OK
+
+         [[maybe_unused]] int const c = 42;
+         // int* pc = static_cast<int*>(&c); // compiler error
       }
 
       // dynamic cast
@@ -91,12 +98,12 @@ namespace recipe_9_06
 
       // reinterpret cast
       {
-         control c;
+         widget w;
 
          user_data* ud = new user_data();
-         c.set_data(reinterpret_cast<control::data_type>(ud));
+         w.set_data(reinterpret_cast<widget::data_type>(ud));
 
-         [[maybe_unused]] user_data* ud2 = reinterpret_cast<user_data*>(c.get_data());
+         [[maybe_unused]] user_data* ud2 = reinterpret_cast<user_data*>(w.get_data());
 
          // undefined behavior
          int* pi = new int{ 42 };

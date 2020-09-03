@@ -180,7 +180,7 @@ namespace recipe_9_07
 #ifdef HAS_FOR_OVERWRITE
       {
          std::unique_ptr<int>   pi = std::make_unique_for_overwrite<int>();
-         std::unique_ptr<int[]> pa = std::make_unique_for_overwrite<int[]>();
+         std::unique_ptr<foo[]> pa = std::make_unique_for_overwrite<foo[]>();
       }
 #endif
    }
