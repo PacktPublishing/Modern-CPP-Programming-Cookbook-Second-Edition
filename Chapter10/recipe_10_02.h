@@ -9,60 +9,63 @@
 
 namespace recipe_10_02
 {
-   class oldcontrol
+   namespace v1
    {
-      std::string text;
-      int width = 0;
-      int height = 0;
-      bool visible = true;
-
-      void draw()
+      class control
       {
-         std::cout 
-            << "control " << '\n'
-            << "  visible: " << std::boolalpha << visible << std::noboolalpha << '\n'
-            << "  size: " << width << ", " << height << '\n'
-            << "  text: " << text << '\n';
-      }
-   public:
-      void set_text(std::string_view t)
-      {
-         text = t.data();
-         draw();
-      }
+         std::string text;
+         int width = 0;
+         int height = 0;
+         bool visible = true;
 
-      void resize(int const w, int const h)
-      {
-         width = w;
-         height = h;
-         draw();
-      }
+         void draw()
+         {
+            std::cout
+               << "control " << '\n'
+               << "  visible: " << std::boolalpha << visible << std::noboolalpha << '\n'
+               << "  size: " << width << ", " << height << '\n'
+               << "  text: " << text << '\n';
+         }
+      public:
+         void set_text(std::string_view t)
+         {
+            text = t.data();
+            draw();
+         }
 
-      void show() 
-      { 
-         visible = true; 
-         draw();
-      }
+         void resize(int const w, int const h)
+         {
+            width = w;
+            height = h;
+            draw();
+         }
 
-      void hide() 
-      { 
-         visible = false; 
-         draw();
-      }
-   };
+         void show()
+         {
+            visible = true;
+            draw();
+         }
+
+         void hide()
+         {
+            visible = false;
+            draw();
+         }
+      };
+   }
 
    void execute()
    {
       {
-         oldcontrol c;
+         v1::control c;
          c.resize(100, 20);
          c.set_text("sample");
          c.hide();
 
-         oldcontrol c2 = c;
+         v1::control c2 = c;
          c2.show();
 
-         oldcontrol c3 = std::move(c2);
+         v1::control c3 = std::move(c2);
          c3.hide();
       }
 
