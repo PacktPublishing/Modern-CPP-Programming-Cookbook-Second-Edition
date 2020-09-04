@@ -1,6 +1,6 @@
 #define CATCH_CONFIG_MAIN
 #include "catch2/catch.hpp"
-
+/*
 TEST_CASE("first_test_case", "[learn][catch]")
 {
    SECTION("first_test_function")
@@ -9,7 +9,7 @@ TEST_CASE("first_test_case", "[learn][catch]")
       REQUIRE(i == 42);
    }
 }
-
+*/
 SCENARIO("first_scenario", "[learn][catch]")
 {
    GIVEN("an integer")
@@ -20,7 +20,7 @@ SCENARIO("first_scenario", "[learn][catch]")
          i = 42;
          THEN("the value can be read back")
          {
-            REQUIRE(i == 0);
+            REQUIRE(i == 42);
          }
       }
    }

@@ -11,7 +11,7 @@ BOOST_AUTO_TEST_CASE(first_test_function)
 
 bool custom_init_unit_test()
 {
-   std::cout << "test runner custom init" << std::endl;
+   std::cout << "test runner custom init\n";
    return true;
 }
 

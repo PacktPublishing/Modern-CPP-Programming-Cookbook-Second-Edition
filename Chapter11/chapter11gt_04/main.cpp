@@ -7,7 +7,7 @@ class TestFixture : public ::testing::Test
 protected:
    TestFixture()
    {
-      std::cout << "constructing fixture" << std::endl;
+      std::cout << "constructing fixture\n";
 
       data.resize(10);
       std::iota(std::begin(data), std::end(data), 1);
@@ -15,7 +15,7 @@ protected:
 
    ~TestFixture()
    {
-      std::cout << "destroying fixture" << std::endl;
+      std::cout << "destroying fixture\n";
    }
 
 protected:
@@ -34,12 +34,12 @@ class TestEnvironment : public ::testing::Environment
 public:
    virtual void SetUp() override 
    {
-      std::cout << "environment setup" << std::endl;
+      std::cout << "environment setup\n";
    }
 
    virtual void TearDown() override 
    {
-      std::cout << "environment cleanup" << std::endl;
+      std::cout << "environment cleanup\n";
    }
 
    int n{ 42 };

@@ -23,7 +23,7 @@ TEST(TestMethods, TestOffset)
    p.offset(1, 1, 1);
    ASSERT_TRUE(p.x() == 2);
    ASSERT_TRUE(p.y() == 3);
-   ASSERT_TRUE(p.z() == 3);
+   ASSERT_TRUE(p.z() == 3); // will fail
 }
 
 TEST(TestOperations, TestEqual)

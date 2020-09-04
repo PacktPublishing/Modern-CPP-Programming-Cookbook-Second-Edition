@@ -30,7 +30,7 @@ TEST_CASE("test operations", "[modify]")
          p.offset(1, 1, 1);
          REQUIRE(p.x() == 2);
          REQUIRE(p.y() == 3);
-         REQUIRE(p.z() == 3);
+         REQUIRE(p.z() == 3); // will fail
       }
    }
 }

@@ -9,7 +9,7 @@ BOOST_AUTO_TEST_CASE(test_constructor)
    auto p = point3d{ 1,2,3 };
    BOOST_TEST(p.x() == 1);
    BOOST_TEST(p.y() == 2);
-   BOOST_TEST(p.z() == 4);
+   BOOST_TEST(p.z() == 4); // will fail
 }
 
 BOOST_AUTO_TEST_CASE(test_origin)
@@ -32,7 +32,7 @@ BOOST_AUTO_TEST_CASE(test_offset)
    p.offset(1, 1, 1);
    BOOST_TEST(p.x() == 2);
    BOOST_TEST(p.y() == 3);
-   BOOST_TEST(p.z() == 3);
+   BOOST_TEST(p.z() == 3); // will fail
 }
 
 BOOST_AUTO_TEST_SUITE_END()
@@ -53,7 +53,7 @@ BOOST_AUTO_TEST_CASE(
    auto p3 = point3d{ 3,2,1 };
 
    BOOST_TEST(p1 == p2);
-   BOOST_TEST(p1 == p3);
+   BOOST_TEST(p1 == p3); // will fail
 }
 
 BOOST_AUTO_TEST_CASE(test_not_equal, 
