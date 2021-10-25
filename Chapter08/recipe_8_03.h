@@ -1,72 +1,58 @@
 #pragma once
 
 #include <mutex>
-#include <thread>
-#include <iostream>
-#include <vector>
-#include <exception>
 
-namespace recipe_8_03
+namespace recipe_8_02
 {
-   std::mutex                       g_mutex;
-   std::vector<std::exception_ptr>  g_exceptions;
-
-   void func1()
+   class foo_rec
    {
-      throw std::runtime_error("exception 1");
-   }
+      std::recursive_mutex m;
+      int data;
 
-   void func2()
-   {
-      throw std::runtime_error("exception 2");
-   }
+   public:
+      foo_rec(int const d = 0) : data(d) {}
 
-   void thread_func1()
-   {
-      try
+      void update(int const d)
       {
-         func1();
+         std::lock_guard<std::recursive_mutex> lock(m);
+         data = d;
       }
-      catch (...)
-      {
-         std::lock_guard<std::mutex> lock(g_mutex);
-         g_exceptions.push_back(std::current_exception());
-      }
-   }
 
-   void thread_func2()
+      int update_with_return(int const d)
+      {
+         std::lock_guard<std::recursive_mutex> lock(m);
+         auto temp = data;
+         update(d);
+         return temp;
+      }
+   };
+
+   class foo
    {
-      try
+      std::mutex m;
+      int data;
+
+      void internal_update(int const d) { data = d; }
+
+      foo(int const d = 0) : data(d) {}
+
+      void update(int const d)
       {
-         func2();
+         std::lock_guard<std::mutex> lock(m);
+         internal_update(d);
       }
-      catch (...)
+
+      int update_with_return(int const d)
       {
-         std::lock_guard<std::mutex> lock(g_mutex);
-         g_exceptions.push_back(std::current_exception());
+         std::lock_guard<std::mutex> lock(m);
+         auto temp = data;
+         internal_update(d);
+         return temp;
       }
-   }
+   };
 
    void execute()
    {
-      g_exceptions.clear();
 
-      std::thread t1(thread_func1);
-      std::thread t2(thread_func2);
-      t1.join();
-      t2.join();
-
-      for (auto const& e : g_exceptions)
-      {
-         try
-         {
-            if (e != nullptr)
-               std::rethrow_exception(e);
-         }
-         catch (std::exception const& ex)
-         {
-            std::cout << ex.what() << '\n';
-         }
-      }
    }
 }
