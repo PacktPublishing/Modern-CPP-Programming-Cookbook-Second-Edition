@@ -32,7 +32,7 @@ struct std::formatter<recipe_2_14::v1::employee>
       return ctx.begin();
    }
 
-   auto format(recipe_2_14::v1::employee const& value, format_context& ctx) {
+   auto format(recipe_2_14::v1::employee const& e, format_context& ctx) {
       return std::format_to(ctx.out(),
          "[{}] {} {}",
          e.id, e.firstName, e.lastName);
