@@ -36,7 +36,7 @@ namespace recipe_7_10
       {
          auto same = fs::equivalent(
             path, 
-            fs::current_path() / "." / "main.cpp");
+            fs::current_path() / "." / "main.cpp", err);
 
          std::cout << "equivalent: " << same << '\n';
       }
