@@ -54,7 +54,7 @@ namespace recipe_1_09
       dummy_array_iterator_type operator++ (int)
       {
          auto temp = *this;         
-         ++*temp;
+         ++*this;
          return temp;
       }
 
