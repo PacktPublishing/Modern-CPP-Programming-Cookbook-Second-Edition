@@ -5,16 +5,16 @@ TEST(TestConstruction, TestConstructor)
 {
    auto p = point3d{ 1,2,3 };
    ASSERT_EQ(p.x(), 1);
-   ASSERT_EQ(p.x(), 2);
-   ASSERT_EQ(p.x(), 3);
+   ASSERT_EQ(p.y(), 2);
+   ASSERT_EQ(p.z(), 3);
 }
 
 TEST(TestConstruction, TestOrigin)
 {
    auto p = point3d::origin();
    ASSERT_EQ(p.x(), 0);
-   ASSERT_EQ(p.x(), 0);
-   ASSERT_EQ(p.x(), 0);
+   ASSERT_EQ(p.y(), 0);
+   ASSERT_EQ(p.z(), 0);
 }
 
 TEST(TestMethods, TestOffset)
